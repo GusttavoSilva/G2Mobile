@@ -1,0 +1,80 @@
+object FraAnimacao: TFraAnimacao
+  Align = Client
+  Size.Width = 428.000000000000000000
+  Size.Height = 705.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Align = Client
+    Fill.Color = xC8C0C0C0
+    Margins.Left = -1.000000000000000000
+    Margins.Top = -1.000000000000000000
+    Margins.Right = -1.000000000000000000
+    Margins.Bottom = -1.000000000000000000
+    Size.Width = 430.000000000000000000
+    Size.Height = 707.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    object CircleAnimacao: TCircle
+      Align = Center
+      Fill.Kind = None
+      Size.Width = 125.000000000000000000
+      Size.Height = 125.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFF3B599E
+      Stroke.Thickness = 10.000000000000000000
+      Visible = False
+      object Label1: TLabel
+        Align = Center
+        StyledSettings = []
+        Size.Width = 99.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+        TextSettings.FontColor = xFF3B599E
+        TextSettings.HorzAlign = Center
+        Text = 'Aguarde.'
+        Visible = False
+        TabOrder = 0
+      end
+    end
+    object ArcAnimacao: TArc
+      Align = Center
+      Size.Width = 125.000000000000000000
+      Size.Height = 125.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFF5BB13
+      Stroke.Thickness = 10.000000000000000000
+      Visible = False
+      EndAngle = -90.000000000000000000
+      object FloatAnimation: TFloatAnimation
+        Enabled = True
+        Duration = 1.000000000000000000
+        Loop = True
+        OnProcess = FloatAnimationProcess
+        PropertyName = 'RotationAngle'
+        StartValue = 0.000000000000000000
+        StopValue = 360.000000000000000000
+      end
+    end
+  end
+  object Layout1: TLayout
+    Align = Contents
+    Size.Width = 428.000000000000000000
+    Size.Height = 705.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object lblAguarde: TLabel
+      Align = Center
+      StyledSettings = [Family, Style]
+      Size.Width = 428.000000000000000000
+      Size.Height = 83.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 30.000000000000000000
+      TextSettings.FontColor = xFF005AAA
+      TextSettings.HorzAlign = Center
+      Text = 'Aguarde...'
+      TabOrder = 0
+    end
+  end
+end

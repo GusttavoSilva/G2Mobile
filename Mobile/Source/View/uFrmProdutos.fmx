@@ -1,0 +1,569 @@
+object FrmProdutos: TFrmProdutos
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 628
+  ClientWidth = 425
+  Fill.Kind = Solid
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
+  object LayoutClientPesq: TLayout
+    Align = Client
+    Size.Width = 425.000000000000000000
+    Size.Height = 628.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object TabControl1: TTabControl
+      Align = Client
+      Size.Width = 425.000000000000000000
+      Size.Height = 628.000000000000000000
+      Size.PlatformDefault = False
+      TabHeight = 49.000000000000000000
+      TabIndex = 0
+      TabOrder = 0
+      TabPosition = PlatformDefault
+      Sizes = (
+        425s
+        579s
+        425s
+        579s)
+      object TabItem1: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 212.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem1'
+        ExplicitSize.cx = 212.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
+        object Layout1: TLayout
+          Align = Client
+          Size.Width = 425.000000000000000000
+          Size.Height = 579.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object Layout2: TLayout
+            Align = Top
+            Size.Width = 425.000000000000000000
+            Size.Height = 65.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object Rectangle3: TRectangle
+              Align = Client
+              Fill.Color = claWhite
+              Size.Width = 425.000000000000000000
+              Size.Height = 65.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              object Button1: TButton
+                Align = Left
+                Position.Y = 8.000000000000000000
+                Size.Width = 48.000000000000000000
+                Size.Height = 48.000000000000000000
+                Size.PlatformDefault = False
+                StyleLookup = 'arrowlefttoolbutton'
+                TabOrder = 0
+                OnClick = Button1Click
+              end
+              object edtPesq: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Anchors = [akLeft, akTop, akRight]
+                TabOrder = 1
+                Position.X = 88.000000000000000000
+                Position.Y = 16.000000000000000000
+                Size.Width = 313.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                TextPrompt = 'Digite o que procura'
+                OnChangeTracking = edtPesqChangeTracking
+                object SearchEditButton1: TSearchEditButton
+                  CanFocus = False
+                  Cursor = crArrow
+                  Size.Width = 32.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                end
+              end
+              object ShadowEffect2: TShadowEffect
+                Distance = 3.000000000000000000
+                Direction = 90.000000000000000000
+                Softness = 0.500000000000000000
+                Opacity = 0.400000005960464500
+                ShadowColor = claBlack
+              end
+            end
+          end
+          object ListView1: TListView
+            ItemAppearanceClassName = 'TDynamicAppearance'
+            ItemEditAppearanceClassName = 'TDynamicAppearance'
+            HeaderAppearanceClassName = 'TListHeaderObjects'
+            FooterAppearanceClassName = 'TListHeaderObjects'
+            Align = Client
+            CanFocus = False
+            ClipChildren = False
+            Size.Width = 425.000000000000000000
+            Size.Height = 514.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            ItemAppearance.ItemHeight = 55
+            ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+              item
+                AppearanceObjectName = 'cod_prod'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Family = 'Segoe UI Semibold'
+                Appearance.Font.Size = 13.000000000000000000
+                Appearance.TextAlign = Leading
+                Appearance.TextColor = xFF3E9BFF
+                Appearance.Width = 38.000000000000000000
+                Appearance.Height = 30.000000000000000000
+                Appearance.PlaceOffset.X = 65.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'Image'
+                AppearanceClassName = 'TImageObjectAppearance'
+                Appearance.ScalingMode = Stretch
+                Appearance.Width = 55.000000000000000000
+                Appearance.Height = 45.000000000000000000
+                Appearance.PlaceOffset.X = 3.000000000000000000
+                Appearance.PlaceOffset.Y = 4.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'desc_ind'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Family = 'Segoe UI Semibold'
+                Appearance.Font.Size = 13.000000000000000000
+                Appearance.TextAlign = Leading
+                Appearance.WordWrap = True
+                Appearance.TextColor = xFF3E9BFF
+                Appearance.Width = 297.000000000000000000
+                Appearance.Height = 30.000000000000000000
+                Appearance.PlaceOffset.X = 102.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'unid_med'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Family = 'Segoe UI Semibold'
+                Appearance.Font.Size = 12.100000381469730000
+                Appearance.TextAlign = Leading
+                Appearance.Width = 155.000000000000000000
+                Appearance.Height = 20.000000000000000000
+                Appearance.PlaceOffset.X = 65.000000000000000000
+                Appearance.PlaceOffset.Y = 32.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'valor_prod'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Family = 'Segoe UI Semibold'
+                Appearance.Font.Size = 12.100000381469730000
+                Appearance.TextAlign = Trailing
+                Appearance.Width = 161.000000000000000000
+                Appearance.Height = 20.000000000000000000
+                Appearance.Align = Trailing
+                Appearance.PlaceOffset.Y = 32.000000000000000000
+              end>
+            ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+              item
+                AppearanceObjectName = 'Text1'
+                AppearanceClassName = 'TTextObjectAppearance'
+              end>
+            CanSwipeDelete = False
+            OnItemClick = ListView1ItemClick
+            SearchVisible = True
+            ControlType = Platform
+            object img_SemFoto: TImage
+              MultiResBitmap.Width = 50
+              MultiResBitmap = <
+                item
+                  Width = 50
+                  Height = 50
+                  PNG = {
+                    89504E470D0A1A0A0000000D49484452000000320000003208060000001E3F88
+                    B1000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                    05DD494441546843ED985B4C1D5514860F073870106D6D226A5A514A8AC0412A
+                    CA4B416D83C4D0AA4D9B6AAB8D51E343156B6C4CD404B58F253EA8E98BA9AD36
+                    F5C198C644858834D1045A11E2850A365C04C50452EB8369D5D0C0E1EEB766D6
+                    994067E6DC86220F7CC9CEDE6BCF6DFF7BAD7D1BDF0A2BAC109514CD973D9D9D
+                    9DE9C160F09D9494948D7EBFBFAEB0B0B05D2F192C9A10F9506666E6137C643B
+                    E6DAD9D959BF7965215CE7D2EC798A5F84C3E18FCACBCBA7CC2BEEC8BBB3B2B2
+                    3EA1B8C3ACF17D535C5CBC59CB068B22A4ABAB6B757A7A7A338DDCA455713137
+                    37D781F86DF9F9F9FF6A950D0711F2DCDBA150E865350D1C7B2D510281C0F144
+                    45088449055E39AEA60D2711D0303E3E5EA7650BCF1EE9EDEDDD4A839AD5F411
+                    362711D548AFCD68D502B837954C1AB6C7A800EEDD460F9F52D3C04D04EFDF53
+                    525232A9B68527213D3D3D01B27334FC76B169D06962B78AC6CE89ED06F7A5F4
+                    F5F5B570DF16B53F45C823C645485484E029B468C88188083E32939A9A7A2096
+                    0841EF7981344DEAC67E56EA051711CD6969698FB98910627A647070F086A9A9
+                    A91A3EB69E9E0B6AB5C1F4F4742D83FC3A2973ED5D7A551A173778653FEFF8B8
+                    B4B4F46FB15D440CF3ED8AA2A2A20B6A3BE22AA4BBBBFB1A1AF9A6F656BA59EB
+                    CCE4E4E4457AAC801EBBA45509E322228278E2C8D8D8D86B4CD76366D5421C85
+                    0C0D0DADE2A11642E52EAD8A0ADEA8C51BEFA9993031445810BE67898EEAB2B2
+                    B27FB4CAC251082EFF9CCC7A290FFF8977DA69F0821E9758277D87DB3FD4AA84
+                    7111F12DDFEAE3DD6BF87625DFBE59EBA5D33EA3D376A9696113C24C740F03B8
+                    4D4DE1687676F64BB9B9B9E36A2F1A2E221A8886DD91157F646424383A3A7A18
+                    51FB8CAB40B992CEEB50D3C069D67A5C73E17B1ED8BF9422648A9DBF6D916F33
+                    A53F4FF107B3C608B1BD5AB4B009C11B77685138897AC7852D1684809FC57203
+                    E9DE818181F55A6D104D84E36267B6E103D332EC8D5AB470F2C81ACD85DF348F
+                    9BFEFEFEDB186347C82FF0C1411A77786262C2985E854445CC63FEF47BBDE616
+                    B116C4988B5B043C20AB751DFBA05F309F23DD383333F313F5D531D689C63844
+                    C4C4D3CA1E41459CA058CF6E3643EAE214318C88DD5E45088B2284303A48183D
+                    A566BC22845B79EE452D7BC2B31044C85EEBA069C52DC25AD01072E8CAC92019
+                    3C0BA1D16F90A54939DE3121DB19EEFB5DED00FB2DAB2392C59310369419ACBC
+                    72B48D5B848C89828282BFF0C4EB5A275ED9A14782A4F124041177CAEE374E11
+                    32C55A033B180C36905D9632ACE679DBDA90089E84D0936BC9BAD95C3E104384
+                    ED3C9197971726FBD5B47C3EDEB14E8B49E155C830F15DC516E2A2D8513CB193
+                    709A50DB022F58BB06EE912370D27812C23EEC6C1CE1E4B8D82122958EC85753
+                    3C12F5E0140B4F4222242A4260DAAE2233B61A6C61C28CB373524E16CF429211
+                    21CFE0917A357D1919195F716F64E0278527214E2268E079CE2F7BDD44B4B6B6
+                    A631631D23ACCAC50E87C373883E645CF440D2425C3C2113C03A0E425FB3F7B2
+                    FDB0239C2A727272CE70CFD35AE5636F760CD1D65923599212E222C218F4020D
+                    AD24EB40CC30A999748A3482B7DAB95661DE6578EF34DEF87FF65A51C6442E0D
+                    7B5FED08B9A4ADA41AD22D52318F132CA6356E2198280909711321676C19ACA1
+                    50681F62EEA3AE0561B693A5D6B590B6B0F63CE3B4B6248BAB10D976B0D85907
+                    FC6822E69FB111D34623EF6725BF8930DA8EB05A495C7A58EAE41AE98C79F7E2
+                    61FB8B422CF79049C3AAA3ADD8F4EE97814060D762F66A3468D783644DA6E5EB
+                    A56D255A3670F2485B3CDB0EA64DC76DC7D502EFAED2A244CBA8162D6C42E4F7
+                    4FAC6DC795E1B414109E561BD8CED87E8AD884A07C56F2E52482B07A92EC51D3
+                    32C2BA518B168EBF4C5DC6C41FF4C4ABE44B29E25A3CF190DFEFDFA9B6F03351
+                    73371DBE6056B40971F1C472E1922CA8081950DBC2165A88788B6CD98990E580
+                    6C939308C1E9277607AE8CEC9364C53E8A2DC23650B6668E25E2321E1824BC9A
+                    589F9A22E3D709A77564330FD6F3D08F0CEC57967A60AFB0C20A57039FEF3FBD
+                    ED47D4F5E29AC80000000049454E44AE426082}
+                  FileName = 'C:\Projetos\Mobile\Imagem\icons\icons8-no-camera-50.png'
+                end>
+              Position.X = 360.000000000000000000
+              Position.Y = 456.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+        end
+      end
+      object TabItem2: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 213.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem2'
+        ExplicitSize.cx = 213.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
+        object Rectangle4: TRectangle
+          Align = Client
+          Fill.Color = xFFF1F0F0
+          Size.Width = 425.000000000000000000
+          Size.Height = 579.000000000000000000
+          Size.PlatformDefault = False
+          object Layout4: TLayout
+            Align = Top
+            Position.Y = 284.000000000000000000
+            Size.Width = 425.000000000000000000
+            Size.Height = 305.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object Rectangle6: TRectangle
+              Align = Client
+              Fill.Color = claWhite
+              Margins.Left = 10.000000000000000000
+              Margins.Top = 5.000000000000000000
+              Margins.Right = 10.000000000000000000
+              Margins.Bottom = 5.000000000000000000
+              Size.Width = 405.000000000000000000
+              Size.Height = 295.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Thickness = 0.400000005960464500
+              XRadius = 10.000000000000000000
+              YRadius = 10.000000000000000000
+              object Label1: TLabel
+                StyledSettings = [Style, FontColor]
+                Position.X = 8.000000000000000000
+                Position.Y = 8.000000000000000000
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 13.000000000000000000
+                Text = 'Produto'
+                TabOrder = 0
+              end
+              object Label11: TLabel
+                Anchors = [akTop, akRight]
+                StyledSettings = [Style, FontColor]
+                Position.X = 236.000000000000000000
+                Position.Y = 112.000000000000000000
+                Size.Width = 129.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 13.000000000000000000
+                Text = 'Valor de Venda'
+                TabOrder = 1
+              end
+              object Label2: TLabel
+                StyledSettings = [Style, FontColor]
+                Position.X = 8.000000000000000000
+                Position.Y = 64.000000000000000000
+                Size.Width = 129.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 13.000000000000000000
+                Text = 'Unidade de Medida'
+                TabOrder = 2
+              end
+              object Label4: TLabel
+                Anchors = [akTop, akRight]
+                StyledSettings = [Style, FontColor]
+                Position.X = 236.000000000000000000
+                Position.Y = 64.000000000000000000
+                Size.Width = 129.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 13.000000000000000000
+                Text = 'Validade'
+                TabOrder = 3
+              end
+              object Label9: TLabel
+                StyledSettings = [Style, FontColor]
+                Position.X = 8.000000000000000000
+                Position.Y = 112.000000000000000000
+                Size.Width = 129.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 13.000000000000000000
+                Text = 'Grupo Comercial'
+                TabOrder = 4
+              end
+              object lbl_GrupoComercial: TLabel
+                StyledSettings = [Style]
+                Position.X = 8.000000000000000000
+                Position.Y = 128.000000000000000000
+                Size.Width = 169.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.FontColor = xFF3E9BFF
+                Text = 'lbl_GrupoComercial'
+                TabOrder = 5
+              end
+              object lbl_Peso: TLabel
+                Anchors = [akTop, akRight]
+                StyledSettings = [Style]
+                Position.X = 236.000000000000000000
+                Position.Y = 176.000000000000000000
+                Size.Width = 161.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.FontColor = xFF3E9BFF
+                Text = 'lbl_Peso'
+                TabOrder = 6
+              end
+              object lbl_PesoText: TLabel
+                Anchors = [akTop, akRight]
+                StyledSettings = [Style, FontColor]
+                Position.X = 236.000000000000000000
+                Position.Y = 160.000000000000000000
+                Size.Width = 129.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 13.000000000000000000
+                Text = 'Peso (KG)'
+                TabOrder = 7
+              end
+              object lbl_Produto: TLabel
+                StyledSettings = [Style]
+                Position.X = 8.000000000000000000
+                Position.Y = 24.000000000000000000
+                Size.Width = 401.000000000000000000
+                Size.Height = 25.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.FontColor = xFF3E9BFF
+                Text = 'lbl_Produto'
+                TabOrder = 8
+              end
+              object lbl_QntCaixa: TLabel
+                StyledSettings = [Style]
+                Position.X = 8.000000000000000000
+                Position.Y = 176.000000000000000000
+                Size.Width = 201.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.FontColor = xFF3E9BFF
+                Text = 'lbl_QntCaixa'
+                TabOrder = 9
+              end
+              object lbl_QntCaixaText: TLabel
+                StyledSettings = [Style, FontColor]
+                Position.X = 8.000000000000000000
+                Position.Y = 160.000000000000000000
+                Size.Width = 129.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 13.000000000000000000
+                Text = 'Qnt. por caixa'
+                TabOrder = 10
+              end
+              object lbl_unid: TLabel
+                StyledSettings = [Style]
+                Position.X = 8.000000000000000000
+                Position.Y = 80.000000000000000000
+                Size.Width = 225.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.FontColor = xFF3E9BFF
+                Text = 'lbl_unid'
+                TabOrder = 11
+              end
+              object lbl_validade: TLabel
+                Anchors = [akTop, akRight]
+                StyledSettings = [Style]
+                Position.X = 236.000000000000000000
+                Position.Y = 80.000000000000000000
+                Size.Width = 169.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.FontColor = xFF3E9BFF
+                Text = 'lbl_validade'
+                TabOrder = 12
+              end
+              object lbl_VlrProd: TLabel
+                Anchors = [akTop, akRight]
+                StyledSettings = [Style]
+                Position.X = 236.000000000000000000
+                Position.Y = 128.000000000000000000
+                Size.Width = 153.000000000000000000
+                Size.Height = 23.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI Semibold'
+                TextSettings.Font.Size = 14.000000000000000000
+                TextSettings.FontColor = xFF3E9BFF
+                Text = 'lbl_unid'
+                TabOrder = 13
+              end
+            end
+          end
+          object Layout5: TLayout
+            Align = Top
+            Margins.Top = 10.000000000000000000
+            Position.Y = 59.000000000000000000
+            Size.Width = 425.000000000000000000
+            Size.Height = 225.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object Rectangle5: TRectangle
+              Align = Client
+              Fill.Color = claWhite
+              Margins.Left = 10.000000000000000000
+              Margins.Top = 5.000000000000000000
+              Margins.Right = 10.000000000000000000
+              Margins.Bottom = 5.000000000000000000
+              Size.Width = 405.000000000000000000
+              Size.Height = 215.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Thickness = 0.400000005960464500
+              XRadius = 10.000000000000000000
+              YRadius = 10.000000000000000000
+              object Rectangle1: TRectangle
+                Align = Center
+                Fill.Kind = None
+                Size.Width = 229.000000000000000000
+                Size.Height = 182.000000000000000000
+                Size.PlatformDefault = False
+                object img_Foto: TImage
+                  MultiResBitmap = <
+                    item
+                    end>
+                  Align = Client
+                  Size.Width = 229.000000000000000000
+                  Size.Height = 165.000000000000000000
+                  Size.PlatformDefault = False
+                  WrapMode = Stretch
+                end
+                object Label5: TLabel
+                  Align = Top
+                  StyledSettings = [Family, Style, FontColor]
+                  Size.Width = 229.000000000000000000
+                  Size.Height = 17.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 10.000000000000000000
+                  TextSettings.HorzAlign = Center
+                  Text = 'Foto Produto'
+                  TabOrder = 1
+                end
+              end
+            end
+          end
+          object Layout3: TLayout
+            Align = Top
+            Size.Width = 425.000000000000000000
+            Size.Height = 49.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            object Rectangle2: TRectangle
+              Align = Top
+              Fill.Color = claWhite
+              Locked = True
+              Size.Width = 425.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              object Label3: TLabel
+                Align = Top
+                StyledSettings = [Style, FontColor]
+                Locked = True
+                Size.Width = 425.000000000000000000
+                Size.Height = 50.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Segoe UI SEMIBOLD'
+                TextSettings.Font.Size = 20.000000000000000000
+                TextSettings.HorzAlign = Center
+                Text = 'INFORMA'#199#213'ES DO PRODUTO'
+                TabOrder = 0
+                object Button2: TButton
+                  Align = Left
+                  Position.Y = 1.000000000000000000
+                  Size.Width = 48.000000000000000000
+                  Size.Height = 48.000000000000000000
+                  Size.PlatformDefault = False
+                  StyleLookup = 'arrowlefttoolbutton'
+                  TabOrder = 0
+                  OnClick = Button2Click
+                end
+              end
+              object ShadowEffect1: TShadowEffect
+                Distance = 3.000000000000000000
+                Direction = 90.000000000000000000
+                Softness = 0.500000000000000000
+                Opacity = 0.400000005960464500
+                ShadowColor = claBlack
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,1 @@
+"E:\G2Sistemas\G2Mobile\ServidorMobile\DWService.exe" -install
