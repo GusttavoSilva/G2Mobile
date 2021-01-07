@@ -25,19 +25,15 @@ uses
   FMX.ListBox,
   FMX.Controls.Presentation,
   FMX.ListView,
-  uClasseNovoPedido,
   System.DateUtils,
   uFrmUtilFormate,
   Form_Mensagem,
   FMX.Effects,
-  uClasseClientes,
-  uClasseFormaPagamento,
-  uClasseProdutos,
-  uClasseCamaraFria,
+  G2Mobile.Model.Clientes,
+  G2Mobile.Model.CamaraFria,
   FMX.ScrollBox,
   FMX.Memo,
   Loading,
-  uInterfaceCamaraFria,
   System.Rtti,
   FMX.Grid.Style,
   FMX.Grid,
@@ -45,7 +41,9 @@ uses
   FMX.Platform,
   FMX.ComboEdit,
   System.Sensors,
-  System.Sensors.Components;
+  System.Sensors.Components,
+  G2Mobile.Model.FormaPagamento,
+  G2Mobile.Model.Parametro, G2Mobile.Model.Produtos, G2Mobile.Model.NovoPedido;
 
 type
   TFrmPedidos = class(TForm)
@@ -440,15 +438,14 @@ implementation
 {$R *.fmx}
 
 uses
-  uClasseNovoPedidoItem,
-  uClasseParametro,
+  G2Mobile.Model.NovoPedidoItem,
   uFrmMain,
   uFrmInicio;
 
 procedure TFrmPedidos.AddProduto;
 begin
 
-  TNovoPedidoItem.new.cod_prod(edt_CodProd.Text.ToInteger).NomeProd(edt_Prod.Text).Und(cbx_Und.ItemIndex)
+  TModelNovoPedidoItem.new.cod_prod(edt_CodProd.Text.ToInteger).NomeProd(edt_Prod.Text).Und(cbx_Und.ItemIndex)
     .Qnt(edt_QntProd.Text.ToInteger).VlrUnit(StrParaDouble(edt_VlrProd.Text))
     .VlrDesconto(StrParaDouble(edt_VlrDesc.Text)).VlrLiquido(StrParaDouble(edt_VlrTotal.Text))
     .AddProdlistPedido(strgrid_ProdutoPed);
@@ -471,22 +468,22 @@ begin
 
   dt_Entrega.Date := DataHoje;
   // PopulaCliente;
-  TCamaraFria.new.PopulaListView(list_PesqCamaraFria, img_armazem);
+  TModelCamaraFria.new.PopulaListView(list_PesqCamaraFria, img_armazem);
   // TProdutos.new.PopulaListView(list_PesqProd, img_SemFoto, edt_PesqProd.Text);
   PopulaProduto;
-  edt_CodCamaraFria.Text := TCamaraFria.new.RetornaCamaraFriaVendedor(codUser);
+  edt_CodCamaraFria.Text := TModelCamaraFria.new.RetornaCamaraFriaVendedor(codUser);
 
   rct_BtnClientesClick(self);
 end;
 
 procedure TFrmPedidos.PopulaCliente;
 begin
-  TClientes.new.PopulaListView(list_PesqCliente, img_positivo, img_negativo, edt_PesqPessoa.Text);
+  TModelClientes.new.PopulaListView(list_PesqCliente, img_positivo, img_negativo, edt_PesqPessoa.Text);
 end;
 
 procedure TFrmPedidos.PopulaProduto;
 begin
-  TProdutos.new.PopulaListView(list_PesqProd, img_SemFoto, edt_PesqProd.Text);
+  TModelProdutos.new.PopulaListView(list_PesqProd, img_SemFoto, edt_PesqProd.Text);
 end;
 
 procedure TFrmPedidos.btn_VoltaNovoPedidoClick(Sender: TObject);
@@ -511,7 +508,7 @@ end;
 
 procedure TFrmPedidos.Btn_DeletarClick(Sender: TObject);
 begin
-  TNovoPedido.new.Chave(lbl_chaveInfo.Text).StatusPedido;
+  TModelNovoPedido.new.Chave(lbl_chaveInfo.Text).StatusPedido;
   // Mensagem de confirmacao...
   Exibir_Mensagem('PERGUNTA', 'PERGUNTA', 'Ativação', 'Deseja deletar esse pedido?', 'Sim', 'Não', $FFDF5447,
     $FFABABAB);
@@ -529,7 +526,7 @@ end;
 
 procedure TFrmPedidos.btn_EditarClick(Sender: TObject);
 begin
-  TNovoPedido.new.Chave(lbl_chaveInfo.Text).StatusPedido;
+  TModelNovoPedido.new.Chave(lbl_chaveInfo.Text).StatusPedido;
 
   Exibir_Mensagem('PERGUNTA', 'PERGUNTA', 'Ativação', 'Deseja editar esse pedido?', 'Sim', 'Não', $FFDF5447, $FFABABAB);
   Frm_Mensagem.ShowModal(
@@ -561,7 +558,7 @@ var
 begin
   try
     List := TStringList.Create;
-    TNovoPedidoItem.new.cod_prod(edt_CodProd.Text.ToInteger).Qnt(edt_QntProd.Text.ToInteger)
+    TModelNovoPedidoItem.new.cod_prod(edt_CodProd.Text.ToInteger).Qnt(edt_QntProd.Text.ToInteger)
       .VlrUnit(StrParaDouble(edt_VlrProd.Text)).CalcProduto(List);
     edt_VlrDesc.Text := formatFloat('#,##0.00', StrToFloat(List[0]));
     edt_VlrTotal.Text := formatFloat('#,##0.00', StrToFloat(List[1]));
@@ -573,8 +570,8 @@ end;
 
 procedure TFrmPedidos.DeletarPedido;
 begin
-  TNovoPedido.new.Chave(lbl_chaveInfo.Text).DeletePedido;
-  TNovoPedidoItem.new.Chave(lbl_chaveInfo.Text).DeleteItems;
+  TModelNovoPedido.new.Chave(lbl_chaveInfo.Text).DeletePedido;
+  TModelNovoPedidoItem.new.Chave(lbl_chaveInfo.Text).DeleteItems;
 end;
 
 procedure TFrmPedidos.EditaReplicaPedido;
@@ -585,7 +582,7 @@ begin
   memo_ObsPedido.Lines.Clear;
   try
     List := TStringList.Create;
-    TNovoPedido.new.Chave(lbl_chaveInfo.Text).EditaReplicaPedido(List);
+    TModelNovoPedido.new.Chave(lbl_chaveInfo.Text).EditaReplicaPedido(List);
     edt_CodCliente.Text := formatFloat('0000', StrToFloat(List[0]));
     edt_CodFormaPagamento.Text := formatFloat('0000', StrToFloat(List[1]));
     edt_CodCamaraFria.Text := formatFloat('0000', StrToFloat(List[2]));
@@ -593,7 +590,7 @@ begin
     memo_ObsPedido.Lines.Add(List[4]);
     dt_Entrega.Date := StrToDate(List[5]);
 
-    TNovoPedidoItem.new.Chave(lbl_chaveInfo.Text).EditaRecplicarItem(strgrid_ProdutoPed);
+    TModelNovoPedidoItem.new.Chave(lbl_chaveInfo.Text).EditaRecplicarItem(strgrid_ProdutoPed);
     SomaItens;
     TabControl1.TabIndex := 2;
   finally
@@ -605,7 +602,7 @@ procedure TFrmPedidos.edt_CodCamaraFriaChangeTracking(Sender: TObject);
 begin
 
   if edt_CodCamaraFria.Text <> '' then
-    edt_CamaraFria.Text := TCamaraFria.new.BuscarCamaraFria(StrToInt(edt_CodCamaraFria.Text))
+    edt_CamaraFria.Text := TModelCamaraFria.new.BuscarCamaraFria(StrToInt(edt_CodCamaraFria.Text))
   else
     edt_CamaraFria.Text := EmptyStr;
   if edt_CamaraFria.Text = '' then
@@ -617,8 +614,8 @@ procedure TFrmPedidos.edt_CodClienteChangeTracking(Sender: TObject);
 begin
   if edt_CodCliente.Text <> '' then
   begin
-    edt_Cliente.Text := TClientes.new.BuscarCliente(edt_CodCliente.Text.ToInteger);
-    edt_LimiteDisp.Text := TClientes.new.RetornaLimite(StrToInt(edt_CodCliente.Text));
+    edt_Cliente.Text := TModelClientes.new.BuscarCliente(edt_CodCliente.Text.ToInteger);
+    edt_LimiteDisp.Text := TModelClientes.new.RetornaLimite(StrToInt(edt_CodCliente.Text));
   end
   else
     edt_Cliente.Text := EmptyStr;
@@ -629,13 +626,13 @@ end;
 procedure TFrmPedidos.edt_CodFormaPagamentoChangeTracking(Sender: TObject);
 begin
   if edt_CodFormaPagamento.Text <> '' then
-    edt_FormaPagamento.Text := TFormaPagamento.new.BuscarFormaPagamento(edt_CodFormaPagamento.Text.ToInteger)
+    edt_FormaPagamento.Text := TModelFormaPagamento.new.BuscarFormaPagamento(edt_CodFormaPagamento.Text.ToInteger)
   else
     edt_FormaPagamento.Text := EmptyStr;
   if edt_FormaPagamento.Text = '' then
     edt_CodFormaPagamento.Text := '0000';
 
-  edt_FormaPagamento.Text := TFormaPagamento.new.BuscarFormaPagamento(edt_CodFormaPagamento.Text.ToInteger);
+  edt_FormaPagamento.Text := TModelFormaPagamento.new.BuscarFormaPagamento(edt_CodFormaPagamento.Text.ToInteger);
 end;
 
 procedure TFrmPedidos.edt_PesqChangeTracking(Sender: TObject);
@@ -688,7 +685,7 @@ end;
 procedure TFrmPedidos.rct_IncluiItemClick(Sender: TObject);
 begin
 
-  TNovoPedido.new.CodCliente(edt_CodCliente.Text.ToInteger).CodCamara(edt_CodCamaraFria.Text.ToInteger)
+  TModelNovoPedido.new.CodCliente(edt_CodCliente.Text.ToInteger).CodCamara(edt_CodCamaraFria.Text.ToInteger)
     .DataEmb(dt_Entrega.Date).ValidaAddProd;
 
   TabControl1.TabIndex := 6;
@@ -767,7 +764,7 @@ begin
     abort;
   end;
 
-  Valida := TNovoPedido.new.CodCliente(edt_CodCliente.Text.ToInteger).VerificaPedido(strgrid_ProdutoPed);
+  Valida := TModelNovoPedido.new.CodCliente(edt_CodCliente.Text.ToInteger).VerificaPedido(strgrid_ProdutoPed);
 
   if Valida <> '' then
   begin
@@ -790,7 +787,7 @@ end;
 procedure TFrmPedidos.FinalizaPedido;
 var
   Chave: String;
-  acao: Integer;
+  acao : Integer;
 begin
 
   if lbl_ChavePedido.Text.IsEmpty then
@@ -802,17 +799,17 @@ begin
   begin
     acao := 1;
     Chave := lbl_ChavePedido.Text;
-    TNovoPedidoItem.new.Chave(Chave).DeleteItems;
+    TModelNovoPedidoItem.new.Chave(Chave).DeleteItems;
   end;
 
-  TNovoPedido.new.acao(acao).Chave(Chave).FormaPagamento(edt_CodFormaPagamento.Text.ToInteger)
+  TModelNovoPedido.new.acao(acao).Chave(Chave).FormaPagamento(edt_CodFormaPagamento.Text.ToInteger)
     .CodCamara(edt_CodCamaraFria.Text.ToInteger).codUser(codUser).CodVendedor(CodVend)
     .CodCliente(edt_CodCliente.Text.ToInteger).Emissao(now).DataEmb(dt_Entrega.Date)
     .Valor(StrParaDouble(edt_VlrLiquido.Text)).Desconto(StrParaDouble(edt_VlrDesconto.Text))
     .Total(StrParaDouble(edt_VlrLiquido.Text)).Comissao(cbx_Comissao.ItemIndex).Latitude(Lat).Longitude(Long)
     .Obs(memo_ObsPedido.Lines.Text).ValidaAddProd.InsertPedido;
 
-  TNovoPedidoItem.new.Chave(Chave).InsertItens(strgrid_ProdutoPed);
+  TModelNovoPedidoItem.new.Chave(Chave).InsertItens(strgrid_ProdutoPed);
 
   TabControl1.TabIndex := 0;
   rct_BtnFiltrerPedidosClick(self);
@@ -821,7 +818,7 @@ end;
 
 procedure TFrmPedidos.list_PedidosItemClick(const Sender: TObject; const AItem: TListViewItem);
 var
-  txt: TListItemText;
+  txt : TListItemText;
   List: TStringList;
 begin
   with AItem do
@@ -830,7 +827,7 @@ begin
     try
       List := TStringList.Create;
       lbl_chaveInfo.Text := txt.TagString;
-      TNovoPedido.new.InfoPedido(txt.TagString, List);
+      TModelNovoPedido.new.InfoPedido(txt.TagString, List);
       if List[0] <> '' then
       begin
         lay_Reprovado.Visible := True;
@@ -858,7 +855,7 @@ begin
       mem_InfoObsPedido.Lines.Add(List[11]);
 
       ClearStringGrid(strList_InfoPed);
-      TNovoPedidoItem.new.PopulaProdInfoStringGrid(txt.TagString, strList_InfoPed);
+      TModelNovoPedidoItem.new.PopulaProdInfoStringGrid(txt.TagString, strList_InfoPed);
 
     finally
       FreeAndNil(List);
@@ -877,7 +874,7 @@ begin
   begin
     txt := TListItemText(Objects.FindDrawable('codigo'));
     edt_CodCamaraFria.Text := formatFloat('0000', StrToFloat(txt.TagString));
-    edt_CamaraFria.Text := TCamaraFria.new.BuscarCamaraFria(StrToInt(edt_CodCamaraFria.Text));
+    edt_CamaraFria.Text := TModelCamaraFria.new.BuscarCamaraFria(StrToInt(edt_CodCamaraFria.Text));
     TabControl1.TabIndex := 2;
   end
 
@@ -892,7 +889,7 @@ begin
     txt := TListItemText(Objects.FindDrawable('cod_cliente'));
     edt_CodCliente.Text := formatFloat('0000', StrToFloat(txt.TagString));
 
-    case TClientes.new.ValidaCliente(StrToInt(edt_CodCliente.Text)) of
+    case TModelClientes.new.ValidaCliente(StrToInt(edt_CodCliente.Text)) of
       1:
         begin
           // Mensagem de confirmacao...
@@ -924,10 +921,10 @@ end;
 procedure TFrmPedidos.SelecioneCliente;
 begin
   // edt_Cliente.Text := TClientes.new.BuscarCliente(StrToInt(edt_CodCliente.Text));
-  TFormaPagamento.new.PopulaListView(StrToInt(edt_CodCliente.Text), list_PesqPagamento, img_Money);
+  TModelFormaPagamento.new.PopulaListView(StrToInt(edt_CodCliente.Text), list_PesqPagamento, img_Money);
 
-  edt_CodFormaPagamento.Text := TFormaPagamento.new.BuscaUltimaFormaDePagamentoCliente(StrToInt(edt_CodCliente.Text));
-  // edt_FormaPagamento.Text := TFormaPagamento.new.BuscarFormaPagamento(StrToInt(edt_CodFormaPagamento.Text));
+  edt_CodFormaPagamento.Text := TModelFormaPagamento.new.BuscaUltimaFormaDePagamentoCliente
+    (StrToInt(edt_CodCliente.Text));
 
   TabControl1.TabIndex := 2;
 end;
@@ -938,7 +935,7 @@ var
 begin
   try
     List := TStringList.Create;
-    TNovoPedidoItem.new.SomaStringGrid(List, strgrid_ProdutoPed);
+    TModelNovoPedidoItem.new.SomaStringGrid(List, strgrid_ProdutoPed);
 
     edt_VlrBruto.Text := List[0];
     edt_VlrDesconto.Text := List[1];
@@ -978,7 +975,7 @@ begin
   begin
     txt := TListItemText(Objects.FindDrawable('codigo'));
     edt_CodFormaPagamento.Text := formatFloat('0000', StrToFloat(txt.TagString));
-    edt_FormaPagamento.Text := TFormaPagamento.new.BuscarFormaPagamento(StrToInt(txt.TagString));
+    edt_FormaPagamento.Text := TModelFormaPagamento.new.BuscarFormaPagamento(StrToInt(txt.TagString));
     TabControl1.TabIndex := 2;
   end
 
@@ -997,7 +994,7 @@ begin
     txt := TListItemText(Objects.FindDrawable('cod_prod'));
     edt_CodProd.Text := formatFloat('0000', StrToFloat(txt.TagString));
 
-    if TNovoPedidoItem.new.cod_prod(edt_CodProd.Text.ToInteger).VerificaItemIncluidos(strgrid_ProdutoPed) = 1 then
+    if TModelNovoPedidoItem.new.cod_prod(edt_CodProd.Text.ToInteger).VerificaItemIncluidos(strgrid_ProdutoPed) = 1 then
     begin
       // Mensagem de confirmacao...
       Exibir_Mensagem('PERGUNTA', 'PERGUNTA', 'PERGUNTA', 'Produto já incluido!' + sLineBreak +
@@ -1022,10 +1019,10 @@ var
   List: TStringList;
 begin
   try
-  edt_QntProd.Text := '1';
+    edt_QntProd.Text := '1';
     List := TStringList.Create;
-    TProdutos.new.RetornaFoto(edt_CodProd.Text.ToInteger, img_SemFoto, img_FotoProd);
-    TProdutos.new.PopulaCampos(edt_CodProd.Text.ToInteger, List);
+    TModelProdutos.new.RetornaFoto(edt_CodProd.Text.ToInteger, img_SemFoto, img_FotoProd);
+    TModelProdutos.new.PopulaCampos(edt_CodProd.Text.ToInteger, List);
 
     edt_CodProd.Text := formatFloat('0000', StrToFloat(List[0]));
     edt_Prod.Text := List[1];
@@ -1038,7 +1035,7 @@ begin
 
     edt_VlrProd.Text := formatFloat('#,##0.00', StrToFloat(List[5]));
 
-    case TParametros.new.Parametro('unid_med') of
+    case TModelParametros.new.Parametro('unid_med') of
       0:
         begin
           cbx_Und.ItemIndex := 0;
@@ -1066,8 +1063,9 @@ end;
 procedure TFrmPedidos.rct_BtnFiltrerPedidosClick(Sender: TObject);
 begin
   ListViewSearch(list_Pedidos);
-  TNovoPedido.new.CodVendedor(CodVend).PSituacao(cbx_BoxSituacao.ItemIndex).PDataIni(dtInicial.Date).PDatafim(dtFinal.Date)
-    .Filter.PopulaListPedidos(list_Pedidos, img_enviado, img_Pendente, img_Aprovado, img_Reprovado);
+  TModelNovoPedido.new.CodVendedor(CodVend).PSituacao(cbx_BoxSituacao.ItemIndex).PDataIni(dtInicial.Date)
+    .PDatafim(dtFinal.Date).Filter.PopulaListPedidos(list_Pedidos, img_enviado, img_Pendente, img_Aprovado,
+    img_Reprovado);
 end;
 
 procedure TFrmPedidos.rct_BtnFormaPagamentoClick(Sender: TObject);
@@ -1080,7 +1078,7 @@ end;
 procedure TFrmPedidos.rct_AddItemClick(Sender: TObject);
 begin
 
-  case TNovoPedidoItem.new.cod_prod(edt_CodProd.Text.ToInteger).VlrUnit(StrParaDouble(edt_VlrProd.Text))
+  case TModelNovoPedidoItem.new.cod_prod(edt_CodProd.Text.ToInteger).VlrUnit(StrParaDouble(edt_VlrProd.Text))
     .ValidaPrecoMinino of
     0:
       begin

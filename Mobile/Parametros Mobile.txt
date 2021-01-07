@@ -1,0 +1,23 @@
+Parametros 
+
+dias_carencia:  Quantidade de dias de carencia apos o vencimento do titulo
+
+retaguardamob: 
+               	0: Nao envia dados para o retaguarda mobile para aprova
+ 		1: envia dados para o retaguarda mobile para aprova
+
+data_mob: 
+		0: Data de pedido e de entrega diferentes
+		1: Data de pedido e entrega com a mesma data
+
+bloq_clientes:  0: Nao bloqueia clientes que estao negativados
+		1: Bloqueia clientes que estao negativados
+
+doc_avista: 	Recebe o codigo do documento (Dinhero ou a vista)
+
+reg_descto: 	0: Registra  o desconto no retaguarda
+		1: Nao Registra o desconto no retaguarda 
+
+unid_med :      0: produtos por unidade
+		1: produtos por peso
+		2: ambas unidade 

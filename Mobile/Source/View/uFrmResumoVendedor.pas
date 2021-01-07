@@ -3,12 +3,45 @@ unit uFrmResumoVendedor;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.Objects,
-  FMX.TabControl, FMX.Gestures, FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView, FMX.DateTimeCtrls,
-  Datasnap.DBClient, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
-  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, uClasseResumoVendedorItens,
-  System.DateUtils, uDataBase, uLibrary, uFrmMain, FMX.Ani, uClasseResumoVendedorClientes, FMX.Effects, Loading;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Graphics,
+  FMX.Dialogs,
+  FMX.Controls.Presentation,
+  FMX.StdCtrls,
+  FMX.Layouts,
+  FMX.Objects,
+  FMX.TabControl,
+  FMX.Gestures,
+  FMX.ListView.Types,
+  FMX.ListView.Appearances,
+  FMX.ListView.Adapters.Base,
+  FMX.ListView,
+  FMX.DateTimeCtrls,
+  Datasnap.DBClient,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf,
+  Data.DB,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
+  System.DateUtils,
+  uDataBase,
+  uFrmMain,
+  FMX.Ani,
+  FMX.Effects,
+  Loading, G2Mobile.Model.ResumoVendedorItens,
+  G2Mobile.Model.ResumoVendedorClientes;
 
 type
   TFrmResumoVend = class(TForm)
@@ -78,7 +111,9 @@ implementation
 
 {$R *.fmx}
 
-uses uFrmInicio, uFrmUtilFormate;
+uses
+  uFrmInicio,
+  uFrmUtilFormate;
 
 procedure TFrmResumoVend.Button3Click(Sender: TObject);
 begin
@@ -95,18 +130,18 @@ begin
 
   edt_DtIniClient.Date := StartOfTheMonth(Date);
   edt_DtFimClient.Date := EndOfTheMonth(Date);
-  edt_DtIniProd.Date   := StartOfTheMonth(Date);
-  edt_DtFimProd.Date   := EndOfTheMonth(Date);
+  edt_DtIniProd.Date := StartOfTheMonth(Date);
+  edt_DtFimProd.Date := EndOfTheMonth(Date);
 
   TabControl1.TabIndex := 0;
 
   try
     ListProd := TStringList.Create;
 
-    TResumoVendedorItens.new.PopulaListView(ListView1, ListProd);
+    TModelResumoVendedorItens.new.PopulaListView(ListView1, ListProd);
 
     lbl_QtdPedProd.Text := ListProd[0];
-    lbl_PesoProd.Text   := ListProd[1];
+    lbl_PesoProd.Text := ListProd[1];
     lbl_VlrTotProd.Text := ListProd[2];
 
   finally
@@ -116,10 +151,10 @@ begin
   try
     ListClient := TStringList.Create;
 
-    TResumoVendedorClientes.new.PopulaListView(ListView2, ListClient);
+    TModelResumoVendedorClientes.new.PopulaListView(ListView2, ListClient);
 
     lbl_qtdPedClient.Text := ListClient[0];
-    lbl_PesoClient.Text   := ListClient[1];
+    lbl_PesoClient.Text := ListClient[1];
     lbl_VlrTotClient.Text := ListClient[2];
   finally
     FreeAndNil(ListClient);
@@ -128,11 +163,11 @@ end;
 
 procedure TFrmResumoVend.rct_BuscaClientClick(Sender: TObject);
 var
-  DataSet:    TFDMemTable;
+  DataSet   : TFDMemTable;
   ListClient: TStringList;
 begin
 
-  TLoading.Show( 'Consultando...');
+  TLoading.Show('Consultando...');
   TThread.CreateAnonymousThread(
     procedure
     var
@@ -145,8 +180,9 @@ begin
           ListClient := TStringList.Create;
           DataSet := TFDMemTable.Create(nil);
 
-          TResumoVendedorClientes.new.LimpaTabelas.BuscaClienteVendidosServidor(edt_DtIniClient.Date, edt_DtFimClient.Date,
-            codVend, DataSet).PopulaClienteVendidoSqLite(DataSet).PopulaListView(ListView2, ListClient);
+          TModelResumoVendedorClientes.new.LimpaTabelas.BuscaClienteVendidosServidor(edt_DtIniClient.Date,
+            edt_DtFimClient.Date, codVend, DataSet).PopulaClienteVendidoSqLite(DataSet).PopulaListView(ListView2,
+            ListClient);
 
           lbl_qtdPedClient.Text := ListClient[0];
           lbl_PesoClient.Text := ListClient[1];
@@ -170,11 +206,11 @@ end;
 
 procedure TFrmResumoVend.rct_BuscaProdClick(Sender: TObject);
 var
-  DataSet:  TFDMemTable;
+  DataSet : TFDMemTable;
   ListProd: TStringList;
 begin
 
-  TLoading.Show( 'Consultando...');
+  TLoading.Show('Consultando...');
 
   TThread.CreateAnonymousThread(
     procedure
@@ -188,8 +224,8 @@ begin
           ListProd := TStringList.Create;
           DataSet := TFDMemTable.Create(nil);
 
-          TResumoVendedorItens.new.LimpaTabelas.BuscaProdVendidosServidor(edt_DtIniProd.Date, edt_DtFimProd.Date, codVend, DataSet)
-            .PopulaProdVendidoSqLite(DataSet).PopulaListView(ListView1, ListProd);
+          TModelResumoVendedorItens.new.LimpaTabelas.BuscaProdVendidosServidor(edt_DtIniProd.Date, edt_DtFimProd.Date,
+            codVend, DataSet).PopulaProdVendidoSqLite(DataSet).PopulaListView(ListView1, ListProd);
 
           lbl_QtdPedProd.Text := ListProd[0];
           lbl_PesoProd.Text := ListProd[1];

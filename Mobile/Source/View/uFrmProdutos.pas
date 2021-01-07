@@ -22,9 +22,8 @@ uses
   FMX.StdCtrls,
   FMX.TabControl,
   FMX.Layouts,
-  uClasseProdutos,
   FMX.Objects,
-  FMX.Effects;
+  FMX.Effects, G2Mobile.Model.Produtos;
 
 type
   TFrmProdutos = class(TForm)
@@ -114,7 +113,7 @@ begin
 
   img_SemFoto.Visible := false;
   ListViewSearch(ListView1);
-  TProdutos.new.PopulaListView(ListView1, img_SemFoto, edtPesq.Text);
+  TModelProdutos.new.PopulaListView(ListView1, img_SemFoto, edtPesq.Text);
 end;
 
 procedure TFrmProdutos.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
@@ -127,8 +126,8 @@ begin
     txt := TListItemText(Objects.FindDrawable('cod_prod'));
     try
       List := TStringList.Create;
-      TProdutos.new.RetornaFoto(txt.TagString.ToInteger, img_SemFoto, img_Foto);
-      TProdutos.new.PopulaCampos(txt.TagString.ToInteger, List);
+      TModelProdutos.new.RetornaFoto(txt.TagString.ToInteger, img_SemFoto, img_Foto);
+      TModelProdutos.new.PopulaCampos(txt.TagString.ToInteger, List);
 
       lbl_Produto.Text := FormatFloat('0000', StrToFloat(List[0])) + ' - ' + List[1];
       lbl_validade.Text := List[2];

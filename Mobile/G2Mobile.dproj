@@ -6,7 +6,7 @@
         <MainSource>G2Mobile.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Android64</Platform>
         <TargetedPlatforms>32785</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -210,40 +210,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Source\Form_Mensagem.pas">
-            <Form>Frm_Mensagem</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
-        <DCCReference Include="Source\uDmDados.pas">
-            <Form>DmDados</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Source\uFraAnimacao.pas">
-            <Form>FraAnimacao</Form>
-            <FormType>fmx</FormType>
-            <DesignClass>TFrame</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Source\uFrmBase.pas">
-            <Form>FrmBase</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
-        <DCCReference Include="Source\uFrmInforSistema.pas">
-            <Form>FrmInforSistema</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
-        <DCCReference Include="Source\uFrmInicio.pas">
-            <Form>FrmInicio</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
-        <DCCReference Include="Source\uFrmMain.pas">
-            <Form>FrmMain</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
-        <DCCReference Include="Source\uSincronizacao.pas">
-            <Form>FrmSinc</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
         <DCCReference Include="Source\Core\FMX.Consts.pas"/>
         <DCCReference Include="Source\Core\Loading.pas"/>
         <DCCReference Include="Source\Core\uAguarde.pas"/>
@@ -252,29 +218,33 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DCCReference Include="Source\Core\uDataBase.pas"/>
         <DCCReference Include="Source\Core\uFrmUtilFormate.pas"/>
         <DCCReference Include="Source\Core\UntLib.pas"/>
-        <DCCReference Include="Source\Model\CamaraFria\uClasseCamaraFria.pas"/>
-        <DCCReference Include="Source\Model\CamaraFria\uInterfaceCamaraFria.pas"/>
-        <DCCReference Include="Source\Model\FormasDePagamentos\uClasseFormaPagamento.pas"/>
-        <DCCReference Include="Source\Model\FormasDePagamentos\uInterfaceFormaPagamento.pas"/>
-        <DCCReference Include="Source\Model\Parametros\uClasseParametro.pas"/>
-        <DCCReference Include="Source\Model\Parametros\uInterfaceParametro.pas"/>
-        <DCCReference Include="Source\Model\Pedidos\ExportarPedidos\uClasseExportarPedidos.pas"/>
-        <DCCReference Include="Source\Model\Pedidos\ExportarPedidos\uInterfaceExportarPedidos.pas"/>
-        <DCCReference Include="Source\Model\Produtos\uClasseProdutos.pas"/>
-        <DCCReference Include="Source\Model\Produtos\uInterfaceProdutos.pas"/>
-        <DCCReference Include="Source\Model\ResumoVendedor\Clientes\uClasseResumoVendedorClientes.pas"/>
-        <DCCReference Include="Source\Model\ResumoVendedor\Clientes\uInterfaceResumoVendedorClientes.pas"/>
-        <DCCReference Include="Source\Model\ResumoVendedor\Itens\uClasseResumoVendedorItens.pas"/>
-        <DCCReference Include="Source\Model\ResumoVendedor\Itens\uInterfaceResumoVendedorItens.pas"/>
-        <DCCReference Include="Source\Model\Usuarios\uClasseUsuarios.pas"/>
-        <DCCReference Include="Source\Model\Usuarios\uInterfaceUsuarios.pas"/>
-        <DCCReference Include="Util\FMX.ZDeviceInfo.pas"/>
-        <DCCReference Include="Source\Model\Pedidos\NovoPedido\Pedido\uClasseNovoPedido.pas"/>
-        <DCCReference Include="Source\Model\Pedidos\NovoPedido\Pedido\uInterfaceNovoPedido.pas"/>
-        <DCCReference Include="Source\Model\Pedidos\NovoPedido\Pedido Item\uInterfaceNovoPedidoItem.pas"/>
-        <DCCReference Include="Source\Model\Pedidos\NovoPedido\Pedido Item\uClasseNovoPedidoItem.pas"/>
+        <DCCReference Include="Source\View\Form_Mensagem.pas">
+            <Form>Frm_Mensagem</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Source\View\uFraAnimacao.pas">
+            <Form>FraAnimacao</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Source\View\uFrmBase.pas">
+            <Form>FrmBase</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <DCCReference Include="Source\View\uFrmClientes.pas">
             <Form>FrmClientes</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Source\View\uFrmInforSistema.pas">
+            <Form>FrmInforSistema</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Source\View\uFrmInicio.pas">
+            <Form>FrmInicio</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Source\View\uFrmMain.pas">
+            <Form>FrmMain</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="Source\View\uFrmPedido.pas">
@@ -289,12 +259,38 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>FrmResumoVend</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="Source\Model\TitulosCliente\uClasseTitulosCliente.pas"/>
-        <DCCReference Include="Source\Model\TitulosCliente\uInterfaceTitulosCliente.pas"/>
-        <DCCReference Include="Source\Model\Clientes\Clientes\uClasseClientes.pas"/>
-        <DCCReference Include="Source\Model\Clientes\Clientes\uInterfaceClientes.pas"/>
-        <DCCReference Include="Source\Model\Clientes\PreCadClientes\uClassePreCadClientes.pas"/>
-        <DCCReference Include="Source\Model\Clientes\PreCadClientes\uInterfacePreCadClientes.pas"/>
+        <DCCReference Include="Source\View\uSincronizacao.pas">
+            <Form>FrmSinc</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Source\Componente\uDmDados.pas">
+            <Form>DmDados</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Source\Util\FMX.ZDeviceInfo.pas"/>
+        <DCCReference Include="Source\Core\uLibraryAndroid.pas"/>
+        <DCCReference Include="Source\Controller\G2Mobile.Controller.CamaraFria.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.CamaraFria.pas"/>
+        <DCCReference Include="Source\Controller\G2Mobile.Controller.Clientes.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.Clientes.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.PreCadClientes.pas"/>
+        <DCCReference Include="Source\Controller\G2Mobile.Controller.FormaPagamento.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.FormaPagamento.pas"/>
+        <DCCReference Include="Source\Controller\G2Mobile.Controller.Parametro.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.Parametro.pas"/>
+        <DCCReference Include="Source\Controller\G2Mobile.Controller.Usuarios.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.Usuarios.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.TitulosCliente.pas"/>
+        <DCCReference Include="Source\Controller\G2Mobile.Controller.ResumoVendedor.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.ResumoVendedorClientes.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.ResumoVendedorItens.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.Produtos.pas"/>
+        <DCCReference Include="Source\Controller\G2Mobile.Controller.Produtos.pas"/>
+        <DCCReference Include="Source\Controller\G2Mobile.Controller.Pedidos.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.ExportarPedidos.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.NovoPedido.pas"/>
+        <DCCReference Include="Source\Model\G2Mobile.Model.NovoPedidoItem.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -551,12 +547,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
                 </DeployFile>
                 <DeployFile LocalName="Android\Debug\styles.xml" Configuration="Debug" Class="AndroidSplashStyles">
                     <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\Exec Mobile\Win32\Debug\G2Mobile.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>G2Mobile.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -892,6 +882,12 @@ $(PreBuildEvent)]]></PreBuildEvent>
                 <DeployFile LocalName="Android\Release\libG2Mobile.so" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Android">
                         <RemoteName>libG2Mobile.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Debug\G2Mobile.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>G2Mobile.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

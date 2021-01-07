@@ -141,11 +141,11 @@ implementation
 {$R *.fmx}
 
 uses
-  uClasseClientes,
+  G2Mobile.Model.Clientes,
   uFrmUtilFormate,
   uFrmInicio,
   uFrmMain,
-  uClasseTitulosCliente,
+  G2Mobile.Model.TitulosCliente,
   Form_Mensagem;
 
 procedure TFrmClientes.Button1Click(Sender: TObject);
@@ -180,7 +180,7 @@ begin
   TabControl1.TabPosition := TTabPosition.None;
   TabControl2.TabPosition := TTabPosition.None;
   TabControl1.TabIndex := 0;
-  TClientes.new.PopulaListView(ListView1, img_positivo, img_negativo, edtPesq.Text);
+  TModelClientes.new.PopulaListView(ListView1, img_positivo, img_negativo, edtPesq.Text);
 end;
 
 procedure TFrmClientes.Image5Click(Sender: TObject);
@@ -191,7 +191,7 @@ end;
 procedure TFrmClientes.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
 var
   List: TStringList;
-  txt: TListItemText;
+  txt : TListItemText;
 begin
   with AItem do
   begin
@@ -199,7 +199,7 @@ begin
     try
       List := TStringList.Create;
 
-      TClientes.new.PopulaCampos(txt.TagString.ToInteger, List);
+      TModelClientes.new.PopulaCampos(txt.TagString.ToInteger, List);
 
       lbl_Codigo.Text := FormatFloat('0000', StrToFloat(List[0]));
       lbl_NomeFantasia.Text := List[1];
@@ -234,14 +234,14 @@ end;
 procedure TFrmClientes.ListView2ItemClick(const Sender: TObject; const AItem: TListViewItem);
 var
   List: TStringList;
-  txt: TListItemText;
+  txt : TListItemText;
 begin
   with AItem do
   begin
     lay_ItensTitulo.Visible := true;
     txt := TListItemText(Objects.FindDrawable('codped'));
     ClearStringGrid(strList_TituloCliente);
-    TTitulosCliente.new.CodPedcar(txt.TagString.ToInteger).PopulaItemTituloStringGrid(strList_TituloCliente);
+    TModelTitulosCliente.new.CodPedcar(txt.TagString.ToInteger).PopulaItemTituloStringGrid(strList_TituloCliente);
 
   end
 end;
@@ -250,7 +250,7 @@ procedure TFrmClientes.Rectangle8Click(Sender: TObject);
 begin
 
   lay_ItensTitulo.Visible := false;
-  TTitulosCliente.new.CodCliente(lbl_Codigo.Text.ToInteger).PopulaListView(ListView2, img_aberto, img_vencido);
+  TModelTitulosCliente.new.CodCliente(lbl_Codigo.Text.ToInteger).PopulaListView(ListView2, img_aberto, img_vencido);
   if ListView2.Items.Count = 0 then
   begin
     Exibir_Mensagem('SUCESSO', 'ALERTA', 'Parabéns!', 'Cliente não possui titulos abertos!', 'OK', '', $FFDF5447,
