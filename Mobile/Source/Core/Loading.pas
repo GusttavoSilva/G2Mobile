@@ -24,9 +24,11 @@ class procedure Show( const msg: string);
 
 implementation
 
+uses
+  G2Mobile.View.Main;
+
 { TLoading }
 
-uses uFrmMain;
 
 class procedure TLoading.Hide;
 begin

@@ -13,15 +13,13 @@ uses
   UntLib in 'Source\Core\UntLib.pas',
   Form_Mensagem in 'Source\View\Form_Mensagem.pas' {Frm_Mensagem},
   uFraAnimacao in 'Source\View\uFraAnimacao.pas' {FraAnimacao: TFrame},
-  uFrmBase in 'Source\View\uFrmBase.pas' {FrmBase},
-  uFrmClientes in 'Source\View\uFrmClientes.pas' {FrmClientes},
-  uFrmInforSistema in 'Source\View\uFrmInforSistema.pas' {FrmInforSistema},
-  uFrmInicio in 'Source\View\uFrmInicio.pas' {FrmInicio},
-  uFrmMain in 'Source\View\uFrmMain.pas' {FrmMain},
+  G2Mobile.View.FormBase in 'Source\View\G2Mobile.View.FormBase.pas' {FrmBase},
+  G2Mobile.View.Clientes in 'Source\View\G2Mobile.View.Clientes.pas' {FrmClientes},
+  G2Mobile.View.InforSistema in 'Source\View\G2Mobile.View.InforSistema.pas' {FrmInforSistema},
+  G2Mobile.View.Inicio in 'Source\View\G2Mobile.View.Inicio.pas' {FrmInicio},
+  G2Mobile.View.Main in 'Source\View\G2Mobile.View.Main.pas' {FrmMain},
   uFrmPedido in 'Source\View\uFrmPedido.pas' {FrmPedidos},
   uFrmProdutos in 'Source\View\uFrmProdutos.pas' {FrmProdutos},
-  uFrmResumoVendedor in 'Source\View\uFrmResumoVendedor.pas' {FrmResumoVend},
-  uSincronizacao in 'Source\View\uSincronizacao.pas' {FrmSinc},
   uDmDados in 'Source\Componente\uDmDados.pas' {DmDados: TDataModule},
   FMX.ZDeviceInfo in 'Source\Util\FMX.ZDeviceInfo.pas',
   uLibraryAndroid in 'Source\Core\uLibraryAndroid.pas',
@@ -45,7 +43,9 @@ uses
   G2Mobile.Controller.Pedidos in 'Source\Controller\G2Mobile.Controller.Pedidos.pas',
   G2Mobile.Model.ExportarPedidos in 'Source\Model\G2Mobile.Model.ExportarPedidos.pas',
   G2Mobile.Model.NovoPedido in 'Source\Model\G2Mobile.Model.NovoPedido.pas',
-  G2Mobile.Model.NovoPedidoItem in 'Source\Model\G2Mobile.Model.NovoPedidoItem.pas';
+  G2Mobile.Model.NovoPedidoItem in 'Source\Model\G2Mobile.Model.NovoPedidoItem.pas',
+  G2Mobile.View.Sincronizacao in 'Source\View\G2Mobile.View.Sincronizacao.pas' {FrmSinc},
+  G2Mobile.View.ResumoVendedor in 'Source\View\G2Mobile.View.ResumoVendedor.pas' {FrmResumoVend};
 
 {$R *.res}
 
@@ -54,6 +54,8 @@ begin
   Application.CreateForm(TDmDados, DmDados);
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TFrm_Mensagem, Frm_Mensagem);
+  Application.CreateForm(TFrmSinc, FrmSinc);
+  Application.CreateForm(TFrmResumoVend, FrmResumoVend);
   Application.Run;
 
 end.

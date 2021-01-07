@@ -1334,8 +1334,8 @@ object FrmPedidos: TFrmPedidos
                 Size.Height = 54.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
-                Viewport.Width = 878.000000000000000000
-                Viewport.Height = 46.000000000000000000
+                Viewport.Width = 886.000000000000000000
+                Viewport.Height = 54.000000000000000000
               end
             end
             object Label7: TLabel
@@ -2325,7 +2325,7 @@ object FrmPedidos: TFrmPedidos
           Options = [AlternatingRowBackground, ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, AlwaysShowSelection, Tabs, Header, HeaderClick, AutoDisplacement]
           OnCellDblClick = strgrid_ProdutoPedCellDblClick
           Viewport.Width = 905.000000000000000000
-          Viewport.Height = 201.000000000000000000
+          Viewport.Height = 233.000000000000000000
           object StringColumn1: TStringColumn
             Header = 'COD.'
             ReadOnly = True

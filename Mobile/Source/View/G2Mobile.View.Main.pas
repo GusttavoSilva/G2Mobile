@@ -1,4 +1,4 @@
-unit uFrmMain;
+unit G2Mobile.View.Main;
 
 interface
 
@@ -40,7 +40,6 @@ uses
 
   uDmDados,
   uConfiguracao,
-  uFrmInforSistema,
 
   uDWJSONObject,
 
@@ -76,7 +75,8 @@ uses
   MobilePermissions.Model.Standard,
   uLibraryAndroid,
   Form_Mensagem,
-  G2Mobile.Model.Usuarios;
+  G2Mobile.Model.Usuarios, G2Mobile.View.Sincronizacao, G2Mobile.View.Clientes,
+  G2Mobile.View.InforSistema;
 // , ksTypes, ksVirtualListView;
 
 type
@@ -356,10 +356,8 @@ implementation
 {$R *.fmx}
 
 uses
-  uFrmClientes,
   System.JSON,
   uAguarde,
-  uSincronizacao,
   System.Threading,
   uDataBase,
   Data.DB,
@@ -368,10 +366,9 @@ uses
   uFrmUtilFormate,
   System.DateUtils,
   System.SysUtils,
-  uFrmInicio,
   G2Mobile.Model.Parametro,
   uFrmPedido,
-  uFrmResumoVendedor;
+  G2Mobile.View.ResumoVendedor, G2Mobile.View.Inicio;
 
 { TFrmMain }
 

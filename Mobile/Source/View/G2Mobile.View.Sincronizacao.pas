@@ -1,4 +1,4 @@
-unit uSincronizacao;
+unit G2Mobile.View.Sincronizacao;
 
 interface
 
@@ -14,7 +14,6 @@ uses
   FMX.Forms,
   FMX.Dialogs,
   FMX.StdCtrls,
-  uFrmBase,
   FMX.Layouts,
   FMX.ListBox,
   FMX.Controls.Presentation,
@@ -35,8 +34,10 @@ uses
   G2Mobile.Model.CamaraFria,
   G2Mobile.Model.FormaPagamento,
   G2Mobile.Model.Usuarios,
-  G2Mobile.Model.TitulosCliente, G2Mobile.Model.Produtos,
-  G2Mobile.Model.ExportarPedidos;
+  G2Mobile.Model.TitulosCliente,
+  G2Mobile.Model.Produtos,
+  G2Mobile.Model.ExportarPedidos,
+  G2Mobile.View.FormBase, G2Mobile.View.Inicio;
 
 type
   TFrmSinc = class(TFrmBase)
@@ -181,7 +182,6 @@ implementation
 
 uses
   uDmDados,
-  uFrmInicio,
   uFrmMain,
   System.JSON,
   FMX.VirtualKeyboard,

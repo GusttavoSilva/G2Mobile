@@ -48,7 +48,6 @@ implementation
 uses
   uFrmUtilFormate,
   System.UITypes,
-  uFrmInforSistema,
   Form_Mensagem;
 
 class function TModelClientes.new: iModelClientes;

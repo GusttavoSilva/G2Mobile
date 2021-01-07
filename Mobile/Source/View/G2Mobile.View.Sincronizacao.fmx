@@ -42,7 +42,7 @@ inherited FrmSinc: TFrmSinc
         Size.Height = 652.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
-        Viewport.Width = 415.000000000000000000
+        Viewport.Width = 420.000000000000000000
         Viewport.Height = 652.000000000000000000
         object lytSinc: TLayout
           Align = Top

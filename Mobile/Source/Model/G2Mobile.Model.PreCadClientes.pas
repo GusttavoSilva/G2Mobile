@@ -71,7 +71,6 @@ implementation
 uses
   uFrmUtilFormate,
   System.UITypes,
-  uFrmInforSistema,
   Form_Mensagem;
 
 { TModelPreCadClientes }

@@ -1,4 +1,4 @@
-unit uFrmClientes;
+unit G2Mobile.View.Clientes;
 
 interface
 
@@ -143,10 +143,10 @@ implementation
 uses
   G2Mobile.Model.Clientes,
   uFrmUtilFormate,
-  uFrmInicio,
-  uFrmMain,
   G2Mobile.Model.TitulosCliente,
-  Form_Mensagem;
+  Form_Mensagem,
+  G2Mobile.View.Inicio,
+  G2Mobile.View.Main;
 
 procedure TFrmClientes.Button1Click(Sender: TObject);
 begin

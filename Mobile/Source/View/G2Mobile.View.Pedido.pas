@@ -1,4 +1,4 @@
-unit uFrmPedido;
+unit G2Mobile.View.Pedido;
 
 interface
 
@@ -439,8 +439,7 @@ implementation
 
 uses
   G2Mobile.Model.NovoPedidoItem,
-  uFrmMain,
-  uFrmInicio;
+   G2Mobile.View.Inicio, G2Mobile.View.Main;
 
 procedure TFrmPedidos.AddProduto;
 begin

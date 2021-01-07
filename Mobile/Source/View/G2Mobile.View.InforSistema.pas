@@ -1,11 +1,24 @@
-unit uFrmInforSistema;
+unit G2Mobile.View.InforSistema;
 
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  uFrmBase, FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.TabControl;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  FMX.Types,
+  FMX.Graphics,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.StdCtrls,
+  FMX.Layouts,
+  FMX.Objects,
+  FMX.Controls.Presentation,
+  FMX.TabControl,
+  G2Mobile.View.FormBase;
 
 type
   TFrmInforSistema = class(TFrmBase)
@@ -36,7 +49,11 @@ implementation
 
 {$R *.fmx}
 
-uses uFrmInicio, uFrmMain, FMX.VirtualKeyboard, FMX.Platform; // , FMX.Helpers.Android, FMX.Platform.Android;
+uses
+  uFrmMain,
+  FMX.VirtualKeyboard,
+  FMX.Platform,
+  G2Mobile.View.Inicio; // , FMX.Helpers.Android, FMX.Platform.Android;
 
 procedure TFrmInforSistema.Button1Click(Sender: TObject);
 begin

@@ -1,4 +1,4 @@
-unit uFrmResumoVendedor;
+unit G2Mobile.View.ResumoVendedor;
 
 interface
 
@@ -40,7 +40,8 @@ uses
   uFrmMain,
   FMX.Ani,
   FMX.Effects,
-  Loading, G2Mobile.Model.ResumoVendedorItens,
+  Loading,
+  G2Mobile.Model.ResumoVendedorItens,
   G2Mobile.Model.ResumoVendedorClientes;
 
 type
@@ -112,8 +113,8 @@ implementation
 {$R *.fmx}
 
 uses
-  uFrmInicio,
-  uFrmUtilFormate;
+  uFrmUtilFormate,
+  G2Mobile.View.Inicio;
 
 procedure TFrmResumoVend.Button3Click(Sender: TObject);
 begin

@@ -1,4 +1,4 @@
-unit uFrmProdutos;
+unit G2Mobile.View.Produtos;
 
 interface
 
@@ -23,7 +23,8 @@ uses
   FMX.TabControl,
   FMX.Layouts,
   FMX.Objects,
-  FMX.Effects, G2Mobile.Model.Produtos;
+  FMX.Effects,
+  G2Mobile.Model.Produtos;
 
 type
   TFrmProdutos = class(TForm)
@@ -87,8 +88,8 @@ implementation
 
 uses
   uFrmUtilFormate,
-  uFrmInicio,
-  uFrmMain;
+  G2Mobile.View.Inicio,
+  G2Mobile.View.Main;
 
 procedure TFrmProdutos.Button1Click(Sender: TObject);
 begin
@@ -119,7 +120,7 @@ end;
 procedure TFrmProdutos.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
 var
   List: TStringList;
-  txt: TListItemText;
+  txt : TListItemText;
 begin
   with AItem do
   begin

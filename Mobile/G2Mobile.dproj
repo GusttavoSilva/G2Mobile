@@ -6,7 +6,7 @@
         <MainSource>G2Mobile.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Android64</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>32785</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -227,23 +227,23 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="Source\View\uFrmBase.pas">
+        <DCCReference Include="Source\View\G2Mobile.View.FormBase.pas">
             <Form>FrmBase</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="Source\View\uFrmClientes.pas">
+        <DCCReference Include="Source\View\G2Mobile.View.Clientes.pas">
             <Form>FrmClientes</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="Source\View\uFrmInforSistema.pas">
+        <DCCReference Include="Source\View\G2Mobile.View.InforSistema.pas">
             <Form>FrmInforSistema</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="Source\View\uFrmInicio.pas">
+        <DCCReference Include="Source\View\G2Mobile.View.Inicio.pas">
             <Form>FrmInicio</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="Source\View\uFrmMain.pas">
+        <DCCReference Include="Source\View\G2Mobile.View.Main.pas">
             <Form>FrmMain</Form>
             <FormType>fmx</FormType>
         </DCCReference>
@@ -253,14 +253,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
         </DCCReference>
         <DCCReference Include="Source\View\uFrmProdutos.pas">
             <Form>FrmProdutos</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
-        <DCCReference Include="Source\View\uFrmResumoVendedor.pas">
-            <Form>FrmResumoVend</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
-        <DCCReference Include="Source\View\uSincronizacao.pas">
-            <Form>FrmSinc</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="Source\Componente\uDmDados.pas">
@@ -291,6 +283,14 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DCCReference Include="Source\Model\G2Mobile.Model.ExportarPedidos.pas"/>
         <DCCReference Include="Source\Model\G2Mobile.Model.NovoPedido.pas"/>
         <DCCReference Include="Source\Model\G2Mobile.Model.NovoPedidoItem.pas"/>
+        <DCCReference Include="Source\View\G2Mobile.View.Sincronizacao.pas">
+            <Form>FrmSinc</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Source\View\G2Mobile.View.ResumoVendedor.pas">
+            <Form>FrmResumoVend</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

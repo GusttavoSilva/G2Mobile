@@ -1,4 +1,4 @@
-unit uFrmBase;
+unit G2Mobile.View.FormBase;
 
 interface
 

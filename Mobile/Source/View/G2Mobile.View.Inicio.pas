@@ -1,4 +1,4 @@
-unit uFrmInicio;
+unit G2Mobile.View.Inicio;
 
 interface
 
@@ -14,7 +14,6 @@ uses
   FMX.Forms,
   FMX.Dialogs,
   FMX.StdCtrls,
-  uFrmBase,
   FMX.Layouts,
   FMX.Controls.Presentation,
   FMX.Objects,
@@ -58,7 +57,10 @@ uses
   IdTCPClient,
   IdHTTP,
   FMX.ScrollBox,
-  FMX.Memo;
+  FMX.Memo,
+  G2Mobile.View.FormBase,
+  G2Mobile.View.Clientes,
+  G2Mobile.View.InforSistema;
 
 type
   TFrmInicio = class(TFrmBase)
@@ -178,18 +180,17 @@ uses
   // {$IF DEFINED (ANDROID)}
   // Androidapi.JNI.Network,
   // {$ENDIF}
-  uFrmMain,
-  uFrmClientes,
-  uFrmInforSistema,
-  uSincronizacao,
   // uFrmPedidos,
   // uFrmPositivacao,
   uDmDados,
   uFrmProdutos,
+
+  G2Mobile.View.Sincronizacao,
   FireDAC.Comp.Client,
   uFrmUtilFormate,
-  uFrmResumoVendedor,
-  uFrmPedido;
+  G2Mobile.View.ResumoVendedor,
+  G2Mobile.View.Main,
+  G2Mobile.View.Pedido;
 
 procedure TFrmInicio.ImgInformacoesClick(Sender: TObject);
 begin
