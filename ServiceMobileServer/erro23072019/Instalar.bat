@@ -1,0 +1,1 @@
+"D:\Projetos\Sistema Mob\ServiceMobileServer\Win32\Release\DWService.exe" -install

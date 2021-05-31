@@ -1,1 +1,1 @@
-"E:\G2Sistemas\G2Mobile\ServidorMobile\DWService.exe" -uninstall
+"D:\Projetos\Mobile\ServidorMobile\DWService.exe" -uninstall
